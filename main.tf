@@ -40,10 +40,9 @@ module "autoscaling" {
   min_size = 1
   max_size = 2
 
-  # vpc_zone_identifier,  despite its name this is how to specify subnets
   vpc_zone_identifier    = module.blog_vpc.public_subnets
   target_group_arns      = module.blog_alb.target_group_arns
-  security_groups = [module.blog_sg.security_group_id]
+  security_groups        = [module.blog_sg.security_group_id]
 
   image_id      = data.aws_ami.app_ami.id
   instance_type = var.instance_type
@@ -57,7 +56,7 @@ module "blog_alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 8.0"
 
-  name = "my-alb"
+  name = "blog-alb"
 
   load_balancer_type = "application"
 
