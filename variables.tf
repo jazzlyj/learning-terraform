@@ -28,6 +28,7 @@ variable "environment" {
     name           = "dev"
     network_prefix = "10.0"   
   }
+}
 
 variable "asg_min" {
   description = "Minimum instance count for the ASG"
